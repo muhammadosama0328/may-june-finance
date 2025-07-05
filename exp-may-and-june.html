@@ -1,0 +1,274 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+	<meta charset="UTF-8">
+	<meta name="viewport" content="width=device-width, initial-scale=1.0, maximum-scale=1.0, user-scalable=no">
+	<title>May-June: Hisaab</title>
+	<style>
+		body {
+			font-family: Arial, sans-serif;
+			margin: 20px;
+			text-align: center;
+		}
+		table {
+			margin: 20px auto;
+			border-collapse: collapse;
+			width: 90%;
+			max-width: 800px;
+		}
+		th, td {
+			padding: 8px;
+			text-align: left;
+			border: 1px solid #ddd;
+		}
+		th {
+			background-color: #f2f2f2;
+			font-weight: bold;
+		}
+		tr:nth-child(even) {
+			background-color: #00d9ff28;
+		}
+		tr:nth-child(odd) {
+			background-color: #ffffff;
+		}
+		tr:hover {
+			background-color: #000000;
+			color: #ffffff;
+		}
+		h3 {
+			color: #333;
+			margin-top: 30px;
+			margin-bottom: 10px;
+		}
+		.total {
+			font-weight: bold;
+			font-size: 18px;
+			color: #2c3e50;
+			margin: 10px 0;
+		}
+	</style>
+</head>
+<body>
+	<h3>Major Expenses</h3>
+	<table border="1">
+		<thead>
+			<tr>
+				<th>Date</th>
+				<th>Amount</th>
+				<th>Payment Source</th>
+				<th>Payment To</th>
+				<th>Description</th>
+			</tr>
+		</thead>
+		<tbody id="major-expense-table-body">
+			<!-- Data will be populated here -->
+		</tbody>
+	</table>
+	<div id="major-total" class="total"></div>
+	
+	<h3>Minor Expenses</h3>
+	<table border="1">
+		<thead>
+			<tr>
+				<th>Date</th>
+				<th>Amount</th>
+				<th>Payment Source</th>
+				<th>Payment To</th>
+				<th>Description</th>
+			</tr>
+		</thead>
+		<tbody id="minor-expense-table-body">
+			<!-- Data will be populated here -->
+		</tbody>
+	</table>
+	<div id="minor-total" class="total"></div>
+	
+	<div style="margin-top: 40px; padding: 20px; background-color: #f8f9fa; border-radius: 8px; max-width: 800px; margin-left: auto; margin-right: auto;">
+		<h3 style="color: #2c3e50; margin-bottom: 20px;">Financial Summary</h3>
+		<div id="calculations" style="text-align: left; line-height: 1.6;">
+			<!-- Calculations will be populated here -->
+		</div>
+	</div>
+	
+	<div style="margin-top: 20px; padding: 20px; background-color: #e8f5e8; border-radius: 8px; max-width: 800px; margin-left: auto; margin-right: auto; border-left: 4px solid #28a745;">
+		<h3 style="color: #155724; margin-bottom: 15px;">Daily Expenses Breakdown</h3>
+		<div style="text-align: left; line-height: 1.8; color: #155724;">
+			<div><strong>Breakfast:</strong> ₹30 × 18 days = ₹540</div>
+			<div><strong>Lunch:</strong> ₹30 × 18 days = ₹540</div>
+			<div><strong>Dinner:</strong> ₹80 × 18 days = ₹1,440</div>
+			<div><strong>Transport Fare:</strong> ₹60 × 10 days = ₹600</div>
+			<hr style="margin: 15px 0; border: none; border-top: 1px solid #28a745;">
+			<div style="font-weight: bold; font-size: 16px;"><strong>Total Daily Expenses:</strong> ₹3,120</div>
+		</div>
+	</div>
+</body>
+</html>
+
+<script>
+// date, amount, payment_source, payment_to, description
+const array = [
+	'17-05-2025', 25000, 'SBI Bank', 'Zulfikar Ali', 'UPI',
+	'20-05-2025', 15000, 'SBI Bank', 'Chacha', 'UPI',
+	'20-05-2025', 40000, 'SBI Bank', 'Chacha', 'UPI',
+	'20-05-2025', 20000, 'SBI Bank', 'Chacha', 'UPI',
+	'26-05-2025', 5000, 'SBI Bank', 'Abbu', 'Withdrawal🏧💵',
+	'28-05-2025', 20000, 'SBI Bank', 'Abbu', 'UPI',
+	'04-06-2025', 2000, 'SBI Bank', 'Abbu', 'UPI',
+	'04-06-2025', 15000, 'SBI Bank', 'Chacha', 'Withdrawal🏧💵',
+	'04-06-2025', 10000, 'SBI Bank', 'Chacha', 'Withdrawal🏧💵',
+	'14-06-2025', 15000, 'SBI Bank', 'Abbu', 'UPI',
+	'14-06-2025', 10000, 'SBI Bank', 'Abbu', 'Withdrawal🏧💵',
+	'14-06-2025', 10000, 'SBI Bank', 'Abbu', 'Withdrawal🏧💵',
+
+	'19-05-2025', 3800, 'Paytm', 'Shopping', 'Bhai ka pant-shirt, t-shirt, Mera pant-shirt',
+	'19-05-2025', 600, 'Paytm', 'Shopping', 'Bhai ka Shoe 👟',
+	'20-05-2025', 500, 'Paytm', 'Barber', 'Face Treatment',
+	'21-05-2025', 2000, 'Paytm', 'Bhai', 'UPI',
+	'21-05-2025', 950, 'Paytm', 'Other', 'Chasma👓',
+	'21-05-2025', 4000, 'Paytm', 'Bhai', 'UPI',
+	'22-05-2025', 162, 'Paytm', 'Zepto', 'Biscuits🍪-905gm',
+	'25-05-2025', 350, 'Paytm', 'Recharge', 'Asfiya',
+	'25-05-2025', 300, 'Paytm', 'Recharge', 'Iqbal Cha',
+	'31-05-2025', 320, 'Paytm', 'Other', 'Ice-Cream🍧: Namo Ghat',
+	'31-05-2025', 2000, 'Paytm', 'Bhai', 'UPI',
+	'20-06-2025', 799, 'Paytm', 'Recharge', 'Asfiya',
+	'20-06-2025', 299, 'Paytm', 'Recharge', 'Iqbal Cha',
+	'26-06-2025', 10000, 'Paytm', 'Abbu', 'UPI',
+
+	'17-05-2025', 309, 'Airtel', 'Spencer', 'Rice🍚🌾',
+	'17-05-2025', 309, 'Airtel', 'Spencer', 'Rice🍚🌾',
+	'18-05-2025', 309, 'Airtel', 'Spencer', 'Rice🍚🌾',
+	'18-05-2025', 309, 'Airtel', 'Spencer', 'Rice🍚🌾',
+	'18-05-2025', 738, 'Airtel', 'Flipkart', 'Shampoo🧴, Toothpaste, Namkeen',
+
+	// lite Zepto
+	'26-05-2025', 311, 'Lite', 'Zepto', 'Biscuits🍪-450g, Namkeen-1kg',
+	'28-05-2025', 125, 'Lite', 'Zepto', 'Dahi * 2',
+	'29-05-2025', 194, 'Lite', 'Rehan', 'Zepto-Dahi',
+	'31-05-2025', 174, 'Lite', 'Zepto', 'Dahi * 2, Rin Saabun🧼 * 2',
+	'09-06-2025', 129, 'Lite', 'Zepto', 'Dahi * 2',
+	'11-06-2025', 75, 'Lite', 'Zepto', 'Sugar * 2',
+	'11-06-2025', 81, 'Lite', 'Zepto', 'Onion🧅5kg',
+	'14-06-2025', 134, 'Lite', 'Zepto', 'Ice-Cream🍧',
+
+	// lite swiggy
+	'28-05-2025', 110, 'Lite', 'Swiggy', 'Ice-Cream🍧',
+	'29-05-2025', 241, 'Lite', 'Swiggy', 'Mustard oil, Handwash',
+	'02-06-2025', 265, 'Lite', 'Swiggy', 'Dahi*2, Mustard oil',
+	'11-06-2025', 284, 'Lite', 'Swiggy', 'Rice🍚🌾',
+	'11-06-2025', 284, 'Lite', 'Swiggy', 'Rice🍚🌾',
+
+	// lite others
+	'19-05-2025', 250, 'Lite', 'Other', 'Saafa',
+	'20-05-2025', 275, 'Lite', 'Jiomart', 'Oil, Powder, Face Mask',
+	'20-05-2025', 190, 'Lite', 'Jiomart', 'Chai-patti:1kg',
+	'20-05-2025', 420, 'Lite', 'Other', 'Ice-Cream🍧, Cold-drink: Namo Ghat',
+	'20-05-2025', 550, 'Lite', 'Other', 'Roll, Chowmin',
+];
+
+// Function to populate tables
+function populateTables() {
+    const majorTableBody = document.getElementById('major-expense-table-body');
+    const minorTableBody = document.getElementById('minor-expense-table-body');
+    const majorTotalDiv = document.getElementById('major-total');
+    const minorTotalDiv = document.getElementById('minor-total');
+    const calculationsDiv = document.getElementById('calculations');
+    
+    // Clear existing content
+    majorTableBody.innerHTML = '';
+    minorTableBody.innerHTML = '';
+    
+    let majorTotal = 0;
+    let minorTotal = 0;
+    
+    // Convert array to objects for easier sorting
+    const expenses = [];
+    for (let i = 0; i < array.length; i += 5) {
+        expenses.push({
+            date: array[i],
+            amount: array[i + 1],
+            paymentSource: array[i + 2],
+            paymentTo: array[i + 3],
+            description: array[i + 4]
+        });
+    }
+    
+    // Sort by date (DD-MM-YYYY format)
+    expenses.sort((a, b) => {
+        const dateA = new Date(a.date.split('-').reverse().join('-'));
+        const dateB = new Date(b.date.split('-').reverse().join('-'));
+        return dateA - dateB;
+    });
+    
+    // Process sorted expenses
+    expenses.forEach(expense => {
+        const row = document.createElement('tr');
+        row.innerHTML = `
+            <td>${expense.date}</td>
+            <td>₹${expense.amount.toLocaleString()}</td>
+            <td>${expense.paymentSource}</td>
+            <td>${expense.paymentTo}</td>
+            <td>${expense.description}</td>
+        `;
+        
+        // Categorize based on amount
+        if (expense.amount < 1000) {
+            minorTableBody.appendChild(row);
+            minorTotal += expense.amount;
+        } else {
+            majorTableBody.appendChild(row);
+            majorTotal += expense.amount;
+        }
+    });
+    
+    // Display totals
+    majorTotalDiv.innerHTML = `Total Major Expenses: ₹${majorTotal.toLocaleString()}`;
+    minorTotalDiv.innerHTML = `Total Minor Expenses: ₹${minorTotal.toLocaleString()}`;
+    
+    // Calculate and display final calculations
+    const openingBalance = 202332;
+	const totalBalance = 202332 + 33209;
+    const extraExpenses = 5000 + 3000 + 3120; // withdrawal🏧💵 + personal misc + UPI lite
+    const grandTotal = majorTotal + minorTotal + extraExpenses;
+    const currentBalance = 2220 + 608 + 1602;
+    const difference = totalBalance - (grandTotal + currentBalance);
+    
+    // Display calculations in HTML
+    calculationsDiv.innerHTML = `
+        <div><strong>Opening Balance:</strong> ₹${openingBalance.toLocaleString()}</div>
+        <div><strong>Salary Credited:</strong> ₹33,209</div>
+        <div><strong>Total Balance:</strong> ₹${totalBalance.toLocaleString()} </div>
+        <hr style="margin: 15px 0; border: none; border-top: 1px solid #ddd;">
+        <div><strong>Total Major Expenses:</strong> ₹${majorTotal.toLocaleString()}</div>
+        <div><strong>Total Minor Expenses:</strong> ₹${minorTotal.toLocaleString()}</div>
+        <div><strong>Extra Expenses:</strong> ₹${extraExpenses.toLocaleString()} <b>(</b>Rent (3000) + personal & other expenses(5000) + Daily Exp.(3120)<b>)</b></div>
+        <div><strong>Grand Total Expenses:</strong> ₹${grandTotal.toLocaleString()}</div>
+        <hr style="margin: 15px 0; border: none; border-top: 1px solid #ddd;">
+		<div><strong>Current Balance:</strong> ₹${currentBalance.toLocaleString()} <b>(</b>UPI lite Balance(1602)<b>)</b></div>
+        <div><strong>Difference:</strong> ₹${difference.toLocaleString()}</div>
+    `;
+}
+
+// Call the function when page loads
+document.addEventListener('DOMContentLoaded', populateTables);
+
+const sbi = 25000 + 15000 + 40000 + 20000 + 5000 + 20000 + 2000 + 15000 + 10000 + 15000 + 10000 + 10000;
+console.log('sbi: ', sbi);
+
+const paytm = 3800 + 600 + 500 + 2000 + 950 + 4000 + 162 + 350 + 300 + 320 + 2000 + 799 + 299 + 10000;
+console.log('paytm: ', paytm);
+
+const airtel = 309 + 309 + 309 + 309 + 738;
+console.log('airtel: ', airtel);
+
+const lite = 311 + 125 + 194 + 174 + 129 + 75 + 81 + 134 + 110 + 241 + 265 + 284 + 284 + 250 + 275 + 190 + 420 + 550;
+console.log('lite: ', lite);
+
+const grandTotal = sbi + paytm + airtel + lite;
+console.log('grandTotal: ', grandTotal);
+const openingBalance = 202332;
+const extraExpenses = 5000 + 5000 + 1620; // withdrawal🏧💵 + personal misc + UPI lite
+const currentBalance = 2220 + 608
+const difference = (openingBalance + 33209) - (grandTotal + extraExpenses + currentBalance);
+console.log('difference:', difference)
+</script>

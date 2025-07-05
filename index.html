@@ -77,7 +77,7 @@
 				padding: 6px 4px;
 			}
 			th:nth-child(1), td:nth-child(1) { /* Date column */
-				min-width: 70px;
+				min-width: 50px;
 			}
 			th:nth-child(2), td:nth-child(2) { /* Amount column */
 				min-width: 70px;
@@ -89,7 +89,7 @@
 				min-width: 100px;
 			}
 			th:nth-child(5), td:nth-child(5) { /* Description column */
-				min-width: 120px;
+				min-width: 140px;
 			}
 		}
 	</style>
@@ -101,7 +101,7 @@
 			<tr>
 				<th> Date </th>
 				<th>Amount</th>
-				<th>Payment Source</th>
+				<th>Source</th>
 				<th>Payment To</th>
 				<th>Description</th>
 			</tr>
@@ -118,7 +118,7 @@
 			<tr>
 				<th> Date </th>
 				<th>Amount</th>
-				<th>Payment Source</th>
+				<th>Source</th>
 				<th>Payment To</th>
 				<th>Description</th>
 			</tr>
@@ -166,7 +166,7 @@ const array = [
 	'14-06', 10000, 'Axis', 'Abbu', '🏧💵',
 	'14-06', 10000, 'Axis', 'Abbu', '🏧💵',
 
-	'19-05', 3800, 'Kotak', 'Shopping', 'Bhai ka, Mera 👖👕',
+	'19-05', 3800, 'Kotak', 'Shopping', 'Bhai ka, Mera👖👕',
 	'19-05', 600, 'Kotak', 'Shopping', 'Bhai ka Shoe 👟',
 	'20-05', 500, 'Kotak', 'Barber', 'Face Treatment',
 	'21-05', 2000, 'Kotak', 'Bhai', 'UPI',
@@ -290,7 +290,7 @@ function populateTables() {
         <div><strong>Extra Expenses:</strong> ₹${extraExpenses.toLocaleString()} <b>(</b>Rent (3000) + personal & other expenses(5000) + Daily Exp.(3120)<b>)</b></div>
         <div><strong>Grand Total Expenses:</strong> ₹${grandTotal.toLocaleString()}</div>
         <hr style="margin: 15px 0; border: none; border-top: 1px solid #ddd;">
-		<div><strong>Current Balance:</strong> ₹${currentBalance.toLocaleString()} <b>(</b>UPI lite Balance(1602)<b>)</b></div>
+		<div><strong>Current Balance:</strong> ₹${currentBalance.toLocaleString()} <b>(</b>Including UPI lite (1602)<b>)</b></div>
         <div><strong>Difference:</strong> ₹${difference.toLocaleString()}</div>
     `;
 }

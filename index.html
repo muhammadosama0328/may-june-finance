@@ -25,6 +25,27 @@
 			background-color: #f2f2f2;
 			font-weight: bold;
 		}
+		/* Set minimum widths for columns to prevent wrapping on mobile */
+		th:nth-child(1), td:nth-child(1) { /* Date column */
+			min-width: 80px;
+			width: 10%;
+		}
+		th:nth-child(2), td:nth-child(2) { /* Amount column */
+			min-width: 80px;
+			width: 12%;
+		}
+		th:nth-child(3), td:nth-child(3) { /* Payment Source column */
+			min-width: 100px;
+			width: 15%;
+		}
+		th:nth-child(4), td:nth-child(4) { /* Payment To column */
+			min-width: 120px;
+			width: 18%;
+		}
+		th:nth-child(5), td:nth-child(5) { /* Description column */
+			min-width: 150px;
+			width: 45%;
+		}
 		tr:nth-child(even) {
 			background-color: #00d9ff28;
 		}
@@ -45,6 +66,31 @@
 			font-size: 18px;
 			color: #2c3e50;
 			margin: 10px 0;
+		}
+		/* Mobile responsiveness */
+		@media (max-width: 768px) {
+			table {
+				width: 95%;
+				font-size: 14px;
+			}
+			th, td {
+				padding: 6px 4px;
+			}
+			th:nth-child(1), td:nth-child(1) { /* Date column */
+				min-width: 70px;
+			}
+			th:nth-child(2), td:nth-child(2) { /* Amount column */
+				min-width: 70px;
+			}
+			th:nth-child(3), td:nth-child(3) { /* Payment Source column */
+				min-width: 80px;
+			}
+			th:nth-child(4), td:nth-child(4) { /* Payment To column */
+				min-width: 100px;
+			}
+			th:nth-child(5), td:nth-child(5) { /* Description column */
+				min-width: 120px;
+			}
 		}
 	</style>
 </head>
@@ -120,7 +166,7 @@ const array = [
 	'14-06', 10000, 'Axis', 'Abbu', '🏧💵',
 	'14-06', 10000, 'Axis', 'Abbu', '🏧💵',
 
-	'19-05', 3800, 'Kotak', 'Shopping', 'Bhai ka 👖👕, Mera 👖👕',
+	'19-05', 3800, 'Kotak', 'Shopping', 'Bhai ka, Mera 👖👕',
 	'19-05', 600, 'Kotak', 'Shopping', 'Bhai ka Shoe 👟',
 	'20-05', 500, 'Kotak', 'Barber', 'Face Treatment',
 	'21-05', 2000, 'Kotak', 'Bhai', 'UPI',

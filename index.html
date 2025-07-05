@@ -111,14 +111,14 @@ const array = [
 	'20-05', 15000, 'Axis', 'Chacha', 'UPI',
 	'20-05', 40000, 'Axis', 'Chacha', 'UPI',
 	'20-05', 20000, 'Axis', 'Chacha', 'UPI',
-	'26-05', 5000, 'Axis', 'Abbu', 'Withdrawal🏧💵',
+	'26-05', 5000, 'Axis', 'Abbu', '🏧💵',
 	'28-05', 20000, 'Axis', 'Abbu', 'UPI',
 	'04-06', 2000, 'Axis', 'Abbu', 'UPI',
-	'04-06', 15000, 'Axis', 'Chacha', 'Withdrawal🏧💵',
-	'04-06', 10000, 'Axis', 'Chacha', 'Withdrawal🏧💵',
+	'04-06', 15000, 'Axis', 'Chacha', '🏧💵',
+	'04-06', 10000, 'Axis', 'Chacha', '🏧💵',
 	'14-06', 15000, 'Axis', 'Abbu', 'UPI',
-	'14-06', 10000, 'Axis', 'Abbu', 'Withdrawal🏧💵',
-	'14-06', 10000, 'Axis', 'Abbu', 'Withdrawal🏧💵',
+	'14-06', 10000, 'Axis', 'Abbu', '🏧💵',
+	'14-06', 10000, 'Axis', 'Abbu', '🏧💵',
 
 	'19-05', 3800, 'Kotak', 'Shopping', 'Bhai ka 👖👕, Mera 👖👕',
 	'19-05', 600, 'Kotak', 'Shopping', 'Bhai ka Shoe 👟',
@@ -228,7 +228,7 @@ function populateTables() {
     // Calculate and display final calculations
     const openingBalance = 202332;
 	const totalBalance = 202332 + 33209;
-    const extraExpenses = 5000 + 3000 + 3120; // withdrawal🏧💵 + personal misc + UPI lite
+    const extraExpenses = 5000 + 3000 + 3120; // 🏧💵 + personal misc + UPI lite
     const grandTotal = majorTotal + minorTotal + extraExpenses;
     const currentBalance = 2220 + 608 + 1602;
     const difference = totalBalance - (grandTotal + currentBalance);
@@ -267,7 +267,7 @@ console.log('UPI lite: ', lite);
 const grandTotal = Axis + kotakBank + unionBank + lite;
 console.log('grandTotal: ', grandTotal);
 const openingBalance = 202332;
-const extraExpenses = 5000 + 5000 + 1620; // withdrawal🏧💵 + personal misc + UPI lite
+const extraExpenses = 5000 + 5000 + 1620; // 🏧💵 + personal misc + UPI lite
 const currentBalance = 2220 + 608
 const difference = (openingBalance + 33209) - (grandTotal + extraExpenses + currentBalance);
 console.log('difference:', difference)
